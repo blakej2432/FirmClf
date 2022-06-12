@@ -13,7 +13,8 @@
 
 ### 2. 데이터 준비
 
-<img width="500" alt="IT 기업 목록" src="https://user-images.githubusercontent.com/104886103/173222700-9853f1e5-3c5f-4354-a8cf-481c14f84b21.PNG">
+<img width="550" alt="IT 기업 목록" src="https://user-images.githubusercontent.com/104886103/173228705-1ac81390-d8d7-4f9c-9800-4a98663e1420.PNG">
+
 
 <img width="576" alt="KT" src="https://user-images.githubusercontent.com/104886103/173222708-e07d0fb8-b146-460c-b44b-4b7a81fe6f6d.PNG">
 
@@ -65,9 +66,28 @@ __정확도 약 86% -> 86%의 확률로 IT/통신과 타업종 기업을 정확�
 
 <img width="350" alt="cb1" src="https://user-images.githubusercontent.com/104886103/173223223-922354fa-6473-44ef-9a9d-97351e0ecd87.png">
 
+------------------------------
 
+### 4. 평가전개
 
+* 정확도 86%의 나이브 베이즈 분류기 생성 -> 기업 분류 판단
 
+* 보완점 : 
+```python
+
+x_test = cv.transform(Series(' '.join(okt_pos('''아이티윌은 창업 이래 IT 인재양성에 전념해 왔습니다.
+현재 IT 분야의 국비지원 과정과 직업상담, 직업알선 등의 종합 서비스를 제공하고 있으며,
+전문 취업 지원팀을 운영하여 1:1 맞춤 취업컨설팅을 진행하고 있습니다.
+훌륭한 인재를 필요로 하는 기업과 IT 전문인으로서 직업을 갖고자 하는 분들에게
+좋은 안내자가 되기 위해 더욱 노력하겠습니다.'''))))
+x_test.toarray()
+cv.inverse_transform(x_test)
+nb.predict(x_test)
+```
+
+__'IT'를 가르치는 '교육'업체의 경우, 기업 소개를 입력하면 타업종이 아닌 IT/통신 기업으로 분류하는 오류 존재__
+
+__IT와 타업종이 아닌 9종 전체 기업분류로 분류 학습을 시행하면 정확도를 높일 것으로 기대 됨__
 
 
 
